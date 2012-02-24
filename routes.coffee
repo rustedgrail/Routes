@@ -2,29 +2,26 @@ fs = require 'fs'
 path = require 'path'
 url = require 'url'
 
-Actions = require('./actions').Actions
 FileTypes = require('./fileTypes')
 
 exports.Routes = class Routes
+  constructor: (@paths) ->
 
-  @getPath: (rawUrl) ->
+  getPath: (rawUrl) ->
     parsedUrl = url.parse(rawUrl, true)
-    console.log "URL #{rawUrl}"
+    base = @paths[@getExtension(parsedUrl.pathname)]
 
     if parsedUrl.pathname == '/'
-      './views/index.html'
-    else if Actions[parsedUrl.pathname]
-      Actions[parsedUrl.pathname](parsedUrl.query)
-    else if path.existsSync "./views#{parsedUrl.pathname}"
-      "./views#{parsedUrl.pathname}"
+      "./#{@paths['html']}/index.html"
+    else if path.existsSync "./#{base}#{parsedUrl.pathname}"
+      "./#{base}#{parsedUrl.pathname}"
     else
-      './views/404.html'
+      "./#{base}/404.html"
 
-  @writeResponse: (path, response) ->
+  writeResponse: (path, response) ->
     fs.readFile path, (err, data) ->
       try
-        console.log "Writing #{path}"
-        contentType = FileTypes[Routes.getExtension(path)]
+        contentType = FileTypes[@getExtension(path)]
         response.writeHead 200,
           "Content-Type": contentType
           "Content-Length": data.length
@@ -34,6 +31,6 @@ exports.Routes = class Routes
         console.log "Trying to reach #{path}"
         console.log err
 
-  @getExtension: (path) ->
+  getExtension: (path) ->
     parts = path.split '.'
     parts[parts.length - 1]

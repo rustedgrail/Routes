@@ -1,1 +1,0 @@
-exports.Actions = class Actions

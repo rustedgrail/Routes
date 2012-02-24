@@ -1,10 +1,12 @@
 Routes = require('./routes').Routes
+paths = require './paths'
 
 onRequest = (request, response) ->
+  routes = new Routes paths
   console.log "Request #{request.url}"
-  path = Routes.getPath request.url
+  path = routes.getPath request.url
   console.log "Path #{path}"
-  Routes.writeResponse path, response
+  routes.writeResponse path, response
 
 app = require('http').createServer onRequest
 
