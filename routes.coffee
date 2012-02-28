@@ -9,10 +9,10 @@ exports.Routes = class Routes
 
   getPath: (rawUrl) ->
     parsedUrl = url.parse(rawUrl, true)
-    base = @paths[@getExtension(parsedUrl.pathname)]
+    base = @paths[path.extname(parsedUrl.pathname)]
 
     if parsedUrl.pathname == '/'
-      "./#{@paths['html']}/index.html"
+      "./#{@paths['.html']}/index.html"
     else if path.existsSync "./#{base}#{parsedUrl.pathname}"
       "./#{base}#{parsedUrl.pathname}"
     else
@@ -21,7 +21,7 @@ exports.Routes = class Routes
   writeResponse: (path, response) ->
     fs.readFile path, (err, data) ->
       try
-        contentType = FileTypes[@getExtension(path)]
+        contentType = FileTypes[path.extname(path)]
         response.writeHead 200,
           "Content-Type": contentType
           "Content-Length": data.length
@@ -30,7 +30,3 @@ exports.Routes = class Routes
       catch err
         console.log "Trying to reach #{path}"
         console.log err
-
-  getExtension: (path) ->
-    parts = path.split '.'
-    parts[parts.length - 1]
