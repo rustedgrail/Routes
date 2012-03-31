@@ -1,5 +1,6 @@
 {
   ".html": "views"
   , ".ico": "views"
-  , ".js": "javascript"
+  , ".js": "."
+  , ".css": "."
 }

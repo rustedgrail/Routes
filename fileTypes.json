@@ -1,4 +1,6 @@
 {
-  "html": "text/html"
-  , "ico": "image/x-icon"
+  ".html": "text/html"
+  , ".ico": "image/x-icon"
+  , ".js": "text/javascript"
+  , ".css": "text/css"
 }
