@@ -1,9 +1,9 @@
 
   $(function() {
     var username;
-    username = "unclebobmartin";
+    username = window.location.search.split("=")[1];
     $.ajax({
-      url: "https://api.twitter.com/1/statuses/user_timeline.json?screen_name=" + username + "&count=5&include_rts=true",
+      url: "https://api.twitter.com/1/statuses/user_timeline.json",
       dataType: "jsonp",
       crossDomain: true,
       data: {
