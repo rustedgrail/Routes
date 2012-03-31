@@ -5,10 +5,6 @@ describe 'the routing framework', ->
   beforeEach ->
     @routes = new Routes paths
 
-  it 'can get a file extension', ->
-    ext = @routes.getExtension 'favicon.ico'
-    expect(ext).toBe "ico"
-
   it 'can find the root path', ->
     path = @routes.getPath '/'
     expect(path).toBe './views/index.html'
