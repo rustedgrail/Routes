@@ -16,7 +16,7 @@
         $("#og_div").append("<ul>");
         for (_i = 0, _len = data.length; _i < _len; _i++) {
           tweet = data[_i];
-          $("#og_div").append("<li><input type=radio name=tweet value='" + tweet.text + "' />" + tweet.text + "<br>");
+          $("#og_div").append("<li><input type=radio name=tweet value='" + (escape(tweet.text)) + "' />" + tweet.text + "<br>");
         }
         return $("#og_div").append("</ul>");
       },

@@ -7,7 +7,7 @@
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       kvp = _ref[_i];
       parts = kvp.split("=");
-      if (parts[0] === "tweet") return parts[1];
+      if (parts[0] === "tweet") return unescape(parts[1]);
     }
   };
 

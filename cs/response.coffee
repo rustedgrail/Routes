@@ -1,7 +1,7 @@
 getCookie = ->
   for kvp in document.cookie.split ";"
     parts = kvp.split "="
-    return parts[1] if parts[0] == "tweet"
+    return unescape(parts[1]) if parts[0] == "tweet"
 
 $ ->
   tweet = getCookie()

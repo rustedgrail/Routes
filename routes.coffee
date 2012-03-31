@@ -19,13 +19,13 @@ exports.Routes = class Routes
       "./#{base}/404.html"
 
   writeResponse: (filePath, response) ->
-    data = fs.readFileSync filePath
-    try
-      contentType = FileTypes[path.extname(filePath)]
-      response.writeHead 200,
-        "Content-Type": contentType
-        "Content-Length": data.length
-      response.end data, 'utf-8'
-    catch err
-      console.log "Trying to reach #{filePath}"
-      console.log err
+    fs.readFile filePath, (err, data) ->
+      try
+        contentType = FileTypes[path.extname(filePath)]
+        response.writeHead 200,
+          "Content-Type": contentType
+          "Content-Length": data.length
+        response.end data, 'utf-8'
+      catch err
+        console.log "Trying to reach #{filePath}"
+        console.log err
