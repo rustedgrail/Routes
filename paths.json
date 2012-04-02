@@ -1,6 +1,7 @@
 {
   ".html": "views"
   , ".ico": "views"
-  , ".js": "."
-  , ".css": "."
+  , ".js": "public/javascript"
+  , ".css": "public/stylesheets"
+  , ".png": "public/images"
 }
