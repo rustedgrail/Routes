@@ -3,4 +3,5 @@
   , ".ico": "image/x-icon"
   , ".js": "text/javascript"
   , ".css": "text/css"
+  , ".png": "image/png"
 }
