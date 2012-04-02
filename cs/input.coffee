@@ -11,7 +11,7 @@ $ ->
     success: (data, status, xhr) ->
       $("#og_div").append("<ul>")
       for tweet in data
-        $("#og_div").append("<li><input type=radio name=tweet value='#{escape(tweet.text)}' />#{tweet.text}<br>")
+        $("#og_div").append("<li><input type=radio name=tweet value='#{escape(tweet.text)}' id=#{tweet.id} /><label for=#{tweet.id}>#{tweet.text}</label><br>")
       $("#og_div").append("</ul>")
     
     error: (xhr, status, error) ->
