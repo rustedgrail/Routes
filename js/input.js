@@ -12,13 +12,14 @@
         include_rts: true
       },
       success: function(data, status, xhr) {
-        var tweet, _i, _len;
-        $("#og_div").append("<ul>");
+        var tweet, _i, _len, _results;
+        $("#og_div").append("<ul></ul>");
+        _results = [];
         for (_i = 0, _len = data.length; _i < _len; _i++) {
           tweet = data[_i];
-          $("#og_div").append("<li><input type=radio name=tweet value='" + (escape(tweet.text)) + "' id=" + tweet.id + " /><label for=" + tweet.id + ">" + tweet.text + "</label><br>");
+          _results.push($("ul").append("<li><input type=radio name=tweet value='" + (escape(tweet.text)) + "' id=" + tweet.id + " /><label for=" + tweet.id + ">" + tweet.text + "</label>"));
         }
-        return $("#og_div").append("</ul>");
+        return _results;
       },
       error: function(xhr, status, error) {
         return console.log("Error: " + error);

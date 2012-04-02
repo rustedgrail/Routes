@@ -9,10 +9,9 @@ $ ->
       count: 5
       include_rts: true
     success: (data, status, xhr) ->
-      $("#og_div").append("<ul>")
+      $("#og_div").append("<ul></ul>")
       for tweet in data
-        $("#og_div").append("<li><input type=radio name=tweet value='#{escape(tweet.text)}' id=#{tweet.id} /><label for=#{tweet.id}>#{tweet.text}</label><br>")
-      $("#og_div").append("</ul>")
+        $("ul").append("<li><input type=radio name=tweet value='#{escape(tweet.text)}' id=#{tweet.id} /><label for=#{tweet.id}>#{tweet.text}</label>")
     
     error: (xhr, status, error) ->
       console.log "Error: #{error}"

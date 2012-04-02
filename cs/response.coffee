@@ -5,6 +5,6 @@ getCookie = ->
 
 $ ->
   tweet = getCookie()
-  $("#og_div").append("<h1>#{tweet}</h1>")
+  $("#og_div").append("<h3 class=title >#{tweet}</h3>")
   document.cookie = 'tweet=; expires=Thu, 01 Jan 1970 00:00:00 GMT;';
 
